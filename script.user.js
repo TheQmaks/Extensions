@@ -9,8 +9,6 @@
 // ==/UserScript==
 
 (function() {
-    let sig = ["products\":[]", "disabledForRegion\":true", "stocks\":[]"];
-
     function process() {
         document.querySelectorAll(".block-dop-info:not(.processed)").forEach(item => {
             let id = item.parentNode.parentNode.getAttribute("data-popup-nm-id");
@@ -19,7 +17,7 @@
             let request = new XMLHttpRequest();
             request.open('GET', `https://wbxcatalog-eu.wildberries.ru/part/${part}/catalog?locale=il&product=${id}&regions=1,4,30,38,40,48,65,68,69,78&stores=507,117501`);
             request.onload = function() {
-                if (!item.classList.contains("processed") && request.status == 200 && !sig.some(str => request.response.includes(str))) {
+                if (!item.classList.contains("processed") && request.status == 200 && request.response.includes("stocks\":[{")) {
                     let il = document.createElement("a");
 
                     il.target = "_blank";
