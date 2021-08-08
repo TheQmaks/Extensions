@@ -11,7 +11,7 @@
 (function() {
     function process() {
         document.querySelectorAll(".block-dop-info:not(.processed)").forEach(item => {
-            let id = item.parentNode.parentNode.getAttribute("data-popup-nm-id");
+            let id = item.parentNode.parentNode.getAttribute("data-nm-id");
             let part = id.slice(0, -6);
 
             let request = new XMLHttpRequest();
