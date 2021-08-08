@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name         Wildberries IL
-// @version 0.1
+// @version 0.2
+// @updateURL https://github.com/TheQmaks/Wildberries-IL/raw/main/script.user.js
 // @namespace    https://github.com/TheQmaks
 // @description  Wildberries RU to Israel product availability checker
 // @author       AnatoliyFeed
