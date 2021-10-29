@@ -1,7 +1,3 @@
-if (localStorage.getItem('wbx__lang2') && localStorage.getItem('wbx__lang2') !== 'Ru') {
-    localStorage.setItem('wbx__lang2', 'Ru');
-}
-
 let catalogParams = "";
 let request = new XMLHttpRequest();
 request.open('GET', 'https://wbx-setup.wildberries.ru/api/v1/settings/locales/il');
