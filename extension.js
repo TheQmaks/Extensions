@@ -24,9 +24,9 @@ function process() {
                 il.href = "https://wildberries.co.il/product?card=" + id;
                 il.className = "spec-action";
                 il.style.background = "linear-gradient(90deg,#9da3e6 0,#eaeaea 95.32%)";
-                il.style.zIndex = Number.MAX_SAFE_INTEGER;
                 il.style.padding = "6px 12px";
                 il.innerHTML = "ISRAEL";
+                il.setAttribute("onclick", "event.stopPropagation();");
 
                 item.appendChild(div).appendChild(il);
             }
