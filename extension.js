@@ -26,7 +26,9 @@ function process() {
                 il.style.background = "linear-gradient(90deg,#9da3e6 0,#eaeaea 95.32%)";
                 il.style.padding = "6px 12px";
                 il.innerHTML = "ISRAEL";
-                il.setAttribute("onclick", "event.stopPropagation();");
+                il.onclick = function(event) {
+                    event.stopPropagation();
+                };
 
                 item.appendChild(div).appendChild(il);
             }
