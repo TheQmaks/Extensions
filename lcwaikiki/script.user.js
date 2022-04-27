@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LCWaikiki CUCO
 // @description  Automatic currency converter for LCWaikiki from turkish lira (TL) to new israeli shekel (ILS)
-// @version      0.3
+// @version      0.4
 // @match        https://www.lcwaikiki.com/*
 // @icon         https://www.lcwaikiki.com/Resource/Images/favicon.ico
 // @connect      bankhapoalim.co.il
@@ -37,7 +37,8 @@ var selectors = [
     "span[class='cart-item__details__info']>p:nth-child(3):not(.processed)",
     "span[class='cart-old-price']",
     "span[class*='rd-cart-item-price']:not(.processed)",
-    "span[class='pull-right']"
+    "span[class='pull-right']",
+    "span[class='product-price__cart-price']"
 ];
 
 function process() {
