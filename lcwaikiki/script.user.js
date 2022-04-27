@@ -29,7 +29,7 @@ GM_xmlhttpRequest({
 });
 
 var selectors = [
-    "span[class*='product-price__price']",
+    "span[class*='product-price__price']:not(.processed)",
     "span[class='price-regular']",
     "span[class='price']",
     "div[class='basket-discount']",
