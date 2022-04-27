@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LCWaikiki CUCO
 // @description  Automatic currency converter for LCWaikiki from turkish lira (TL) to new israeli shekel (ILS)
-// @version      0.2
+// @version      0.3
 // @match        https://www.lcwaikiki.com/*
 // @icon         https://www.lcwaikiki.com/Resource/Images/favicon.ico
 // @connect      bankhapoalim.co.il
@@ -28,13 +28,27 @@ GM_xmlhttpRequest({
     }
 });
 
+var selectors = [
+    "span[class='price-regular']",
+    "span[class='price']",
+    "div[class='basket-discount']",
+    "span[class='cart-info--total']",
+    "span[class='cart-item__details__info']>p:nth-child(3):not(.processed)",
+    "span[class='cart-old-price']",
+    "span[class*='rd-cart-item-price']:not(.processed)",
+    "span[class='pull-right']"
+];
+
 function process() {
-    document.querySelectorAll("span[class*='price-regular'], div[class*='basket-discount']").forEach(element => {
-        let text = element.innerText;
-        if(text.endsWith("TL")) {
-            let priceILS = parseFloat(text.split(" ")[0]) * exchangeRateTL;
-            element.innerText = Number(priceILS / exchangeRateUSD).toFixed(1) + "$ (" + Number(priceILS).toFixed(1) + "₪)";
-        }
+    selectors.map(selector => {
+        document.querySelectorAll(selector).forEach(element => {
+            let matches = element.innerText.match(/[+-]?\d+(\.\d+)?/g);
+            if(matches && matches[0]) {
+                let priceILS = parseFloat(matches[0]) * exchangeRateTL;
+                element.innerText = Number(priceILS / exchangeRateUSD).toFixed(1) + "$ (" + Number(priceILS).toFixed(1) + "₪)";
+                element.classList.add("processed");
+            }
+        });
     });
 }
 
